@@ -6,7 +6,14 @@
 npm install
 ```
 
-### 2. Deploy
+## 3. Deploy in server
+```
+tmux attach -t frontend
+```
+
+### 3. Deploy
 ```
 npm run dev
 ```
+
+
