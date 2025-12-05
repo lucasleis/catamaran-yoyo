@@ -1,33 +1,39 @@
 import { Sunset, PartyPopper, MapPin, Users } from 'lucide-react';
 
+import atardecer from "../assets/atardecer.jpg";
+import islas from "../assets/islas.jpg";
+import paseo_privado from "../assets/paseo_privado.jpg";
+import celebraciones from "../assets/celebraciones2.jpeg";
+
+
 const Experiences = () => {
   const experiences = [
     {
       icon: Users,
       title: 'Paseos Privados',
       description: 'Experiencia exclusiva personalizada para ti y tus acompañantes',
-      image: 'https://images.pexels.com/photos/1839919/pexels-photo-1839919.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: paseo_privado,
       duration: '4-8 horas',
     },
     {
       icon: PartyPopper,
       title: 'Celebraciones',
       description: 'Cumpleaños, aniversarios, despedidas o cualquier ocasión especial',
-      image: 'https://images.pexels.com/photos/3171815/pexels-photo-3171815.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: celebraciones,
       duration: 'Flexible',
     },
     {
       icon: MapPin,
       title: 'Tours por Islas',
       description: 'Descubre las islas más hermosas del Pacífico panameño',
-      image: 'https://images.pexels.com/photos/3601425/pexels-photo-3601425.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: islas,
       duration: 'Todo el día',
     },
     {
       icon: Sunset,
       title: 'Atardeceres',
       description: 'Contempla las puestas de sol más espectaculares en medio del océano',
-      image: 'https://images.pexels.com/photos/1118877/pexels-photo-1118877.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: atardecer, 
       duration: '3-4 horas',
     },
   ];
