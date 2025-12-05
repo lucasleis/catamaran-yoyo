@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import galeria_1 from "../assets/galeria_1.jpeg";
-//import galeria_2 from "../assets/galeria_2.jpeg";
-import galeria_3 from "../assets/galeria_3.jpg";
-import galeria_4 from "../assets/galeria_4.jpeg";
-//import galeria_5 from "../assets/galeria_5.jpeg";
-import galeria_6 from "../assets/galeria_6.jpeg";
-import galeria_7 from "../assets/galeria_7.jpeg";
-//import galeria_8 from "../assets/galeria_8.jpeg";
+import galeria_1 from "../assets/imgs/galeria_1.jpeg";
+//import galeria_2 from "../assets/imgs/galeria_2.jpeg";
+import galeria_3 from "../assets/imgs/galeria_3.jpg";
+import galeria_4 from "../assets/imgs/galeria_4.jpeg";
+//import galeria_5 from "../assets/imgs/galeria_5.jpeg";
+import galeria_6 from "../assets/imgs/galeria_6.jpeg";
+import galeria_7 from "../assets/imgs/galeria_7.jpeg";
+//import galeria_8 from "../assets/imgs/galeria_8.jpeg";
 
 
 

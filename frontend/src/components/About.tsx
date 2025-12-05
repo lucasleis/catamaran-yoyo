@@ -1,5 +1,5 @@
 import { Shield, Users, Heart, Award } from 'lucide-react';
-import barco from "../assets/barco_altura.jpeg"; 
+import barco from "../assets/imgs/barco_altura.jpeg"; 
 // import barco from "../assets/barco_altura_altura.jpeg"; 
 
 
