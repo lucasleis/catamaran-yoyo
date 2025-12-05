@@ -1,12 +1,23 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
+import galeria_1 from "../assets/galeria_1.jpeg";
+//import galeria_2 from "../assets/galeria_2.jpeg";
+import galeria_3 from "../assets/galeria_3.jpg";
+import galeria_4 from "../assets/galeria_4.jpeg";
+//import galeria_5 from "../assets/galeria_5.jpeg";
+import galeria_6 from "../assets/galeria_6.jpeg";
+import galeria_7 from "../assets/galeria_7.jpeg";
+//import galeria_8 from "../assets/galeria_8.jpeg";
+
+
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
     {
-      url: 'https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=800',
+      url: galeria_1,
       alt: 'Catamarán navegando',
     },
     {
@@ -14,11 +25,11 @@ const Gallery = () => {
       alt: 'Atardecer en el mar',
     },
     {
-      url: 'https://images.pexels.com/photos/3601425/pexels-photo-3601425.jpeg?auto=compress&cs=tinysrgb&w=800',
+      url: galeria_3,
       alt: 'Islas tropicales',
     },
     {
-      url: 'https://images.pexels.com/photos/1458457/pexels-photo-1458457.jpeg?auto=compress&cs=tinysrgb&w=800',
+      url: galeria_4,
       alt: 'Vista del catamarán',
     },
     {
@@ -26,11 +37,11 @@ const Gallery = () => {
       alt: 'Interior del catamarán',
     },
     {
-      url: 'https://images.pexels.com/photos/1839919/pexels-photo-1839919.jpeg?auto=compress&cs=tinysrgb&w=800',
+      url: galeria_6,
       alt: 'Experiencia privada',
     },
     {
-      url: 'https://images.pexels.com/photos/3171815/pexels-photo-3171815.jpeg?auto=compress&cs=tinysrgb&w=800',
+      url: galeria_7,
       alt: 'Celebración a bordo',
     },
     {
