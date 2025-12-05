@@ -1,4 +1,7 @@
 import { Shield, Users, Heart, Award } from 'lucide-react';
+import barco from "../assets/barco_altura.jpeg"; 
+// import barco from "../assets/barco_altura_altura.jpeg"; 
+
 
 const About = () => {
   return (
@@ -56,7 +59,7 @@ const About = () => {
 
           <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
             <img
-              src="https://images.pexels.com/photos/1458457/pexels-photo-1458457.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src={barco}
               alt="Catamarán navegando"
               className="w-full h-full object-cover"
             />
