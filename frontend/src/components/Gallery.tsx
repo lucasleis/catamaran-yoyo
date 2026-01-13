@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import galeria_1 from "../assets/imgs/galeria_1.jpeg";
 import galeria_2 from "../assets/imgs/galeria_2.jpg";
@@ -10,44 +11,19 @@ import galeria_6 from "../assets/imgs/galeria_6.jpeg";
 import galeria_7 from "../assets/imgs/galeria_7.jpeg";
 import galeria_8 from "../assets/imgs/galeria_8.jpeg";
 
-
-
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const images = [
-    {
-      url: galeria_4,
-      alt: 'Catamarán navegando',
-    },
-    {
-      url: galeria_3,
-      alt: 'Atardecer en el mar',
-    },
-    {
-      url: galeria_2,
-      alt: 'Islas tropicales',
-    },
-    {
-      url: galeria_1,
-      alt: 'Vista del catamarán',
-    },
-    {
-      url: galeria_8,
-      alt: 'Interior del catamarán',
-    },
-    {
-      url: galeria_5,
-      alt: 'Experiencia privada',
-    },
-    {
-      url: galeria_6,
-      alt: 'Celebración a bordo',
-    },
-    {
-      url: galeria_7,
-      alt: 'Cubierta del catamarán',
-    },
+    { url: galeria_4, alt: 'Catamarán navegando' },
+    { url: galeria_3, alt: 'Atardecer en el mar' },
+    { url: galeria_2, alt: 'Islas tropicales' },
+    { url: galeria_1, alt: 'Vista del catamarán' },
+    { url: galeria_8, alt: 'Interior del catamarán' },
+    { url: galeria_5, alt: 'Experiencia privada' },
+    { url: galeria_6, alt: 'Celebración a bordo' },
+    { url: galeria_7, alt: 'Cubierta del catamarán' },
   ];
 
   return (
@@ -77,6 +53,16 @@ const Gallery = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
+        </div>
+
+        {/* BOTÓN VER MÁS */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => navigate('/gallery')}
+            className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all"
+          >
+            Ver más imágenes
+          </button>
         </div>
 
         {selectedImage && (

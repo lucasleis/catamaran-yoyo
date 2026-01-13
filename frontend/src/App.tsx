@@ -1,28 +1,13 @@
-import Hero from './components/Hero';
-import About from './components/About';
-import Features from './components/Features';
-import Experiences from './components/Experiences';
-import WhyChooseUs from './components/WhyChooseUs';
-import Testimonials from './components/Testimonials';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import GalleryPage from './components/GalleryPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Features />
-      <Experiences />
-      <WhyChooseUs />
-      <Testimonials />
-      <Gallery />
-      <Contact />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
+    </Routes>
   );
 }
 
