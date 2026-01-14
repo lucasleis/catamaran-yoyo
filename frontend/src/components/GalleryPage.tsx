@@ -1,52 +1,38 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-import galeria_1 from "../assets/imgs/galeria_1.jpeg";
-import galeria_2 from "../assets/imgs/galeria_2.jpg";
-import galeria_3 from "../assets/imgs/galeria_3.jpg";
-import galeria_4 from "../assets/imgs/galeria_4.jpeg";
-import galeria_5 from "../assets/imgs/galeria_5.jpg";
-import galeria_6 from "../assets/imgs/galeria_6.jpeg";
-import galeria_7 from "../assets/imgs/galeria_7.jpeg";
-import galeria_8 from "../assets/imgs/galeria_8.jpeg";
+import {
+  barcoImages,
+  clientesImages,
+  comidaImages,
+  destinoImages,
+} from '../utils/galleryImages';
 
 const sections = [
   {
-    id: 'living',
-    label: 'Living',
-    images: [galeria_1],
+    id: 'barco',
+    label: 'El barco',
+    images: barcoImages,
   },
   {
-    id: 'cocina',
-    label: 'Cocina completa',
-    images: [galeria_2],
+    id: 'comida',
+    label: 'Comidas a bordo',
+    images: comidaImages,
   },
   {
-    id: 'comedor',
-    label: 'Comedor',
-    images: [galeria_3],
+    id: 'destino',
+    label: 'Destinos',
+    images: destinoImages,
   },
   {
-    id: 'dormitorio1',
-    label: 'Dormitorio 1',
-    images: [galeria_4],
-  },
-  {
-    id: 'dormitorio2',
-    label: 'Dormitorio 2',
-    images: [galeria_5],
-  },
-  {
-    id: 'banos',
-    label: 'Baños',
-    images: [galeria_6, galeria_7],
-  },
-  {
-    id: 'exterior',
-    label: 'Exterior',
-    images: [galeria_8],
+    id: 'clientes',
+    label: 'Nuestros clientes',
+    images: clientesImages,
   },
 ];
+
+console.log(barcoImages);
+
 
 const GalleryPage = () => {
   const scrollToSection = (id: string) => {
