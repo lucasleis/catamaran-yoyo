@@ -1,5 +1,9 @@
 import { Users, Music, Shield, Wifi, Utensils, Anchor } from 'lucide-react';
 
+// Path para imágenes 
+import img1 from '../assets/imgs/barco/barco-1.jpg';
+import img2 from '../assets/imgs/barco/barco-3.jpg';
+
 const Features = () => {
   const features = [
     {
@@ -53,8 +57,12 @@ const Features = () => {
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
@@ -62,14 +70,15 @@ const Features = () => {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src={img1} 
               alt="Interior del catamarán"
               className="w-full h-full object-cover"
             />
           </div>
+
           <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="https://images.pexels.com/photos/2245436/pexels-photo-2245436.png?auto=compress&cs=tinysrgb&w=800"
+              src={img2} 
               alt="Exterior del catamarán"
               className="w-full h-full object-cover"
             />
