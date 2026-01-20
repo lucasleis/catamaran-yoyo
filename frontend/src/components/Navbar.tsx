@@ -1,97 +1,141 @@
-import { useState, useEffect } from 'react';
-import { Anchor, Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+import {
+  barcoImages,
+  clientesImages,
+  comidaImages,
+  destinoImages,
+} from '../utils/galleryImages';
 
+const sections = [
+  {
+    id: 'barco',
+    label: 'El barco',
+    images: barcoImages,
+  },
+  {
+    id: 'comida',
+    label: 'Comidas a bordo',
+    images: comidaImages,
+  },
+  {
+    id: 'destino',
+    label: 'Destinos',
+    images: destinoImages,
+  },
+  {
+    id: 'clientes',
+    label: 'Nuestros clientes',
+    images: clientesImages,
+  },
+];
+
+const GalleryPage = () => {
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
+  // Medimos la altura REAL del Navbar
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useEffect(() => {
+    const navbar = document.querySelector('nav[data-navbar]');
+    if (!navbar) return;
+
+    const updateHeight = () => {
+      setNavbarHeight(navbar.getBoundingClientRect().height);
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
+
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection('hero')}>
-          <Anchor className={`w-8 h-8 ${isScrolled ? 'text-blue-600' : 'text-white'}`} />
-          <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-            Catamarán Yoyo
-          </span>
-        </div>
+    <>
+      <Navbar />
 
-        <div className="hidden md:flex space-x-8">
-          {['Nosotros', 'Experiencias', 'Galería', 'Contacto'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-              className={`font-medium transition-colors ${
-                isScrolled
-                  ? 'text-gray-700 hover:text-blue-600'
-                  : 'text-white hover:text-blue-200'
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-          <button
-            onClick={() => scrollToSection('contacto')}
-            className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
-          >
-            Reservar Ahora
-          </button>
-        </div>
+      <main className="pt-24 pb-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
 
-        <button
-          className="md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? (
-            <X className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-          ) : (
-            <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-          )}
-        </button>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg mt-2">
-          <div className="flex flex-col space-y-4 px-6 py-6">
-            {['Nosotros', 'Experiencias', 'Galería', 'Contacto'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-gray-700 hover:text-blue-600 font-medium text-left"
-              >
-                {item}
-              </button>
-            ))}
-            <button
-              onClick={() => scrollToSection('contacto')}
-              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-3 rounded-full font-semibold"
-            >
-              Reservar Ahora
-            </button>
+          {/* HEADER */}
+          <div className="mt-16 mb-10">
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              Recorrido fotográfico
+            </h1>
           </div>
+
+          {/* MENÚ GALERÍA (STICKY) */}
+          <div
+            id="gallery-nav"
+            className="sticky z-40 bg-white border-b border-gray-200"
+            style={{ top: navbarHeight }}
+          >
+            {/* Wrapper interno para separación visual */}
+            <div className="mt-2">
+              <div className="flex gap-6 overflow-x-auto py-4">
+                {sections.map(section => (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    className="
+                      whitespace-nowrap
+                      text-sm
+                      font-medium
+                      text-gray-600
+                      hover:text-gray-900
+                      transition-colors
+                      border-b-2
+                      border-transparent
+                      hover:border-gray-900
+                      pb-2
+                    "
+                  >
+                    {section.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* SECCIONES */}
+          <div className="space-y-24 pt-8">
+            {sections.map(section => (
+              <section key={section.id} id={section.id}>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                  {section.label}
+                </h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {section.images.map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="h-80 rounded-xl overflow-hidden"
+                    >
+                      <img
+                        src={img}
+                        alt={section.label}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
         </div>
-      )}
-    </nav>
+      </main>
+
+      <Footer />
+    </>
   );
 };
 
-export default Navbar;
+export default GalleryPage;
