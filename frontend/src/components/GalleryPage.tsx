@@ -8,37 +8,25 @@ import {
   clientesImages,
   comidaImages,
   destinoImages,
+  videos,
 } from '../utils/galleryImages';
 
-const sections = [
-  {
-    id: 'barco',
-    label: 'El barco',
-    images: barcoImages,
-  },
-  {
-    id: 'comida',
-    label: 'Comidas a bordo',
-    images: comidaImages,
-  },
-  {
-    id: 'destino',
-    label: 'Destinos',
-    images: destinoImages,
-  },
-  {
-    id: 'clientes',
-    label: 'Nuestros clientes',
-    images: clientesImages,
-  },
+type Section =
+  | { id: string; label: string; images: string[] }
+  | { id: string; label: string };
+
+const sections: Section[] = [
+  { id: 'barco', label: 'El barco', images: barcoImages },
+  { id: 'comida', label: 'Comidas a bordo', images: comidaImages },
+  { id: 'destino', label: 'Destinos', images: destinoImages },
+  { id: 'clientes', label: 'Nuestros clientes', images: clientesImages },
+  { id: 'videos', label: 'Videos' },
 ];
 
 const GalleryPage = () => {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // Medimos la altura REAL del Navbar
@@ -57,13 +45,17 @@ const GalleryPage = () => {
     return () => window.removeEventListener('resize', updateHeight);
   }, []);
 
+  const imageSections = sections.filter(
+    (s): s is { id: string; label: string; images: string[] } =>
+      'images' in s && Array.isArray(s.images)
+  );
+
   return (
     <>
       <Navbar />
 
       <main className="pt-24 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-
           {/* HEADER */}
           <div className="mt-16 mb-10">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
@@ -106,7 +98,8 @@ const GalleryPage = () => {
 
           {/* SECCIONES */}
           <div className="space-y-24 pt-8">
-            {sections.map(section => (
+            {/* IMÁGENES */}
+            {imageSections.map(section => (
               <section key={section.id} id={section.id}>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-6">
                   {section.label}
@@ -114,10 +107,7 @@ const GalleryPage = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {section.images.map((img, idx) => (
-                    <div
-                      key={idx}
-                      className="h-80 rounded-xl overflow-hidden"
-                    >
+                    <div key={idx} className="h-80 rounded-xl overflow-hidden">
                       <img
                         src={img}
                         alt={section.label}
@@ -128,8 +118,30 @@ const GalleryPage = () => {
                 </div>
               </section>
             ))}
-          </div>
 
+            {/* VIDEOS (AL FINAL) */}
+            <section id="videos">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                Videos
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {videos.map((src, idx) => (
+                  <div
+                    key={idx}
+                    className="h-80 rounded-xl overflow-hidden bg-black"
+                  >
+                    <video
+                      src={src}
+                      controls
+                      preload="metadata"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
       </main>
 

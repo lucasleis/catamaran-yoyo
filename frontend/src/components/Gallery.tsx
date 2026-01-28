@@ -9,7 +9,7 @@ import galeria_4 from "../assets/imgs/galeria_4.jpeg";
 import galeria_5 from "../assets/imgs/galeria_5.jpg";
 import galeria_6 from "../assets/imgs/galeria_6.jpeg";
 import galeria_7 from "../assets/imgs/galeria_7.jpeg";
-import galeria_8 from "../assets/imgs/galeria_8.jpeg";
+import galeria_8 from "../assets/imgs/destino/destino-2.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
