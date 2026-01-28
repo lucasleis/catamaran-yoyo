@@ -1,17 +1,30 @@
 import { useState, useEffect } from 'react';
 import { Anchor, Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+type NavbarProps = {
+  forceScrolled?: boolean;
+};
+
+const Navbar = ({ forceScrolled = false }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (forceScrolled) {
+      setIsScrolled(true);
+      return;
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
+    handleScroll(); // estado inicial
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [forceScrolled]);
+
+  const scrolled = forceScrolled || isScrolled;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -24,26 +37,37 @@ const Navbar = () => {
   return (
     <nav
       data-navbar
-      data-scrolled={isScrolled}
+      data-scrolled={scrolled}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
+        scrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection('hero')}>
-          <Anchor className={`w-8 h-8 ${isScrolled ? 'text-blue-600' : 'text-white'}`} />
-          <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+        <div
+          className="flex items-center space-x-3 cursor-pointer"
+          onClick={() => scrollToSection('hero')}
+        >
+          <Anchor
+            className={`w-8 h-8 ${
+              scrolled ? 'text-blue-600' : 'text-white'
+            }`}
+          />
+          <span
+            className={`text-2xl font-bold ${
+              scrolled ? 'text-gray-900' : 'text-white'
+            }`}
+          >
             Catamarán Yoyo
           </span>
         </div>
 
         <div className="hidden md:flex space-x-8">
-          {['Nosotros', 'Experiencias', 'Galería', 'Contacto'].map((item) => (
+          {['Nosotros', 'Experiencias', 'Galería', 'Contacto'].map(item => (
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
               className={`font-medium transition-colors ${
-                isScrolled
+                scrolled
                   ? 'text-gray-700 hover:text-blue-600'
                   : 'text-white hover:text-blue-200'
               }`}
@@ -51,6 +75,7 @@ const Navbar = () => {
               {item}
             </button>
           ))}
+
           <button
             onClick={() => scrollToSection('contacto')}
             className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
@@ -64,9 +89,9 @@ const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            <X className={`w-6 h-6 ${scrolled ? 'text-gray-900' : 'text-white'}`} />
           ) : (
-            <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+            <Menu className={`w-6 h-6 ${scrolled ? 'text-gray-900' : 'text-white'}`} />
           )}
         </button>
       </div>
@@ -74,7 +99,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg mt-2">
           <div className="flex flex-col space-y-4 px-6 py-6">
-            {['Nosotros', 'Experiencias', 'Galería', 'Contacto'].map((item) => (
+            {['Nosotros', 'Experiencias', 'Galería', 'Contacto'].map(item => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -83,6 +108,7 @@ const Navbar = () => {
                 {item}
               </button>
             ))}
+
             <button
               onClick={() => scrollToSection('contacto')}
               className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-3 rounded-full font-semibold"

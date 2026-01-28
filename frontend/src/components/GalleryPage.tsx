@@ -24,9 +24,15 @@ const sections: Section[] = [
 ];
 
 const GalleryPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   // Medimos la altura REAL del Navbar
@@ -52,7 +58,7 @@ const GalleryPage = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar forceScrolled />
 
       <main className="pt-24 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
