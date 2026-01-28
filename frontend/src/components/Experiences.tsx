@@ -3,7 +3,7 @@ import { Sunset, PartyPopper, MapPin, Users } from 'lucide-react';
 import atardecer from "../assets/imgs/atardecer.jpg";
 import islas from "../assets/imgs/islas.jpg";
 import paseo_privado from "../assets/imgs/paseo_privado.jpg";
-import celebraciones from "../assets/imgs/celebraciones2.jpeg";
+import celebraciones from "../assets/imgs/celebraciones.jpeg";
 
 
 const Experiences = () => {
