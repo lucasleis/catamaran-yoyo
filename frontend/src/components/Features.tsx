@@ -1,46 +1,56 @@
-import { Users, Music, Shield, Wifi, Utensils, Anchor } from 'lucide-react';
+import { Users, Music, Shield, Wifi, Utensils, Anchor } from "lucide-react";
+import { useState } from "react";
 
-// Path para imágenes 
-import img1 from '../assets/imgs/barco/barco-1.jpg';
-import img2 from '../assets/imgs/barco/barco-3.jpg';
+// Imágenes
+import img1 from "../assets/imgs/barco/barco-1.jpg";
+import img2 from "../assets/imgs/barco/barco-3.jpg";
+
+const ImageSkeleton = () => (
+  <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+);
 
 const Features = () => {
+  const [img1Loaded, setImg1Loaded] = useState(false);
+  const [img2Loaded, setImg2Loaded] = useState(false);
+
   const features = [
     {
       icon: Users,
-      title: 'Capacidad hasta 20 personas',
-      description: 'Espacio amplio y cómodo para grupos grandes',
+      title: "Capacidad hasta 20 personas",
+      description: "Espacio amplio y cómodo para grupos grandes",
     },
     {
       icon: Music,
-      title: 'Sistema de sonido premium',
-      description: 'Música de alta calidad para ambientar tu experiencia',
+      title: "Sistema de sonido premium",
+      description: "Música de alta calidad para ambientar tu experiencia",
     },
     {
       icon: Shield,
-      title: 'Equipo de seguridad certificado',
-      description: 'Chalecos salvavidas, botiquín y comunicación de emergencia',
+      title: "Equipo de seguridad certificado",
+      description: "Chalecos salvavidas, botiquín y comunicación de emergencia",
     },
     {
       icon: Wifi,
-      title: 'Conectividad a bordo',
-      description: 'Wi-Fi disponible para compartir tus momentos',
+      title: "Conectividad a bordo",
+      description: "Wi-Fi disponible para compartir tus momentos",
     },
     {
       icon: Utensils,
-      title: 'Servicio de catering',
-      description: 'Opciones de comida y bebida según tu preferencia',
+      title: "Servicio de catering",
+      description: "Opciones de comida y bebida según tu preferencia",
     },
     {
       icon: Anchor,
-      title: 'Zonas de anclaje exclusivas',
-      description: 'Acceso a las mejores bahías y playas privadas',
+      title: "Zonas de anclaje exclusivas",
+      description: "Acceso a las mejores bahías y playas privadas",
     },
   ];
 
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Comodidad y Lujo en Alta Mar
@@ -50,6 +60,7 @@ const Features = () => {
           </p>
         </div>
 
+        {/* Features */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <div
@@ -67,22 +78,39 @@ const Features = () => {
           ))}
         </div>
 
+        {/* Imágenes */}
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
+          
+          {/* Imagen 1 */}
+          <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl bg-gray-100">
+            {!img1Loaded && <ImageSkeleton />}
             <img
-              src={img1} 
+              src={img1}
               alt="Interior del catamarán"
-              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setImg1Loaded(true)}
+              className={`w-full h-full object-cover transition-opacity duration-700 ${
+                img1Loaded ? "opacity-100" : "opacity-0"
+              }`}
             />
           </div>
 
-          <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
+          {/* Imagen 2 */}
+          <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl bg-gray-100">
+            {!img2Loaded && <ImageSkeleton />}
             <img
-              src={img2} 
+              src={img2}
               alt="Exterior del catamarán"
-              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setImg2Loaded(true)}
+              className={`w-full h-full object-cover transition-opacity duration-700 ${
+                img2Loaded ? "opacity-100" : "opacity-0"
+              }`}
             />
           </div>
+
         </div>
       </div>
     </section>
