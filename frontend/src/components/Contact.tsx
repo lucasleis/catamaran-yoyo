@@ -1,25 +1,38 @@
-import { useState } from 'react';
-import { Calendar, Users, Mail, Phone, MessageCircle, Send } from 'lucide-react';
+import { useState } from "react";
+import { Calendar, Users, Mail, Phone, MessageCircle, Send } from "lucide-react";
+
+const ImageSkeleton = () => (
+  <div className="absolute inset-0 bg-gray-300 animate-pulse" />
+);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    guests: '',
-    tourType: 'privado',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    guests: "",
+    tourType: "privado",
+    message: "",
   });
+
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     const whatsappMessage = `Hola! Me gustaría reservar un tour en catamarán.%0A%0ANombre: ${formData.name}%0AEmail: ${formData.email}%0ATeléfono: ${formData.phone}%0AFecha: ${formData.date}%0APersonas: ${formData.guests}%0ATipo de tour: ${formData.tourType}%0AMensaje: ${formData.message}`;
-    window.open(`https://wa.me/50766666666?text=${whatsappMessage}`, '_blank');
+
+    window.open(
+      `https://wa.me/50766666666?text=${whatsappMessage}`,
+      "_blank"
+    );
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setFormData({
       ...formData,
@@ -30,6 +43,8 @@ const Contact = () => {
   return (
     <section id="contacto" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Reserva Tu Aventura
@@ -40,10 +55,14 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
+
+          {/* FORMULARIO */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Nombre Completo</label>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Nombre Completo
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -57,7 +76,9 @@ const Contact = () => {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Email
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -69,7 +90,9 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Teléfono</label>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Teléfono
+                  </label>
                   <input
                     type="tel"
                     name="phone"
@@ -117,7 +140,9 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Tipo de Tour</label>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Tipo de Tour
+                </label>
                 <select
                   name="tourType"
                   value={formData.tourType}
@@ -133,7 +158,9 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Mensaje</label>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Mensaje
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -154,9 +181,12 @@ const Contact = () => {
             </form>
           </div>
 
+          {/* INFO + IMAGEN */}
           <div className="space-y-8">
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Información de Contacto</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Información de Contacto
+              </h3>
 
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
@@ -179,29 +209,42 @@ const Contact = () => {
                   <Mail className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600">info@catamaranpanama.com</p>
+                    <p className="text-gray-600">
+                      info@catamaranpanama.com
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Horarios de Atención</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Horarios de Atención
+              </h3>
               <p className="text-gray-600 mb-4">
                 Lunes a Domingo: 7:00 AM - 7:00 PM
               </p>
               <p className="text-gray-700">
-                Respondemos todas las consultas en menos de 2 horas. Para reservas de último
-                minuto, contáctanos por WhatsApp para una respuesta inmediata.
+                Respondemos todas las consultas en menos de 2 horas. Para reservas
+                de último minuto, contáctanos por WhatsApp para una respuesta
+                inmediata.
               </p>
             </div>
 
-            <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl bg-gray-200">
+              {!imageLoaded && <ImageSkeleton />}
+
               <img
                 src="https://images.pexels.com/photos/1118877/pexels-photo-1118877.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Contacto"
-                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setImageLoaded(true)}
+                className={`w-full h-full object-cover transition-opacity duration-700 ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
               />
+
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent flex items-end p-6">
                 <p className="text-white text-lg font-semibold">
                   Tu aventura comienza con un solo mensaje
@@ -209,6 +252,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
