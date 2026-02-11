@@ -18,3 +18,13 @@ npm run dev
 
 
 San Blas   
+
+
+
+## Magick
+
+magick atardecer.jpg atardecer.webp
+
+magick mogrify -format webp *.jpg
+
+magick mogrify -format webp *.jpg *.png *.jpeg
