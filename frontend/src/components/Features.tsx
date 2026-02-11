@@ -2,8 +2,8 @@ import { Users, Music, Shield, Wifi, Utensils, Anchor } from "lucide-react";
 import { useState } from "react";
 
 // Imágenes
-import img1 from "../assets/imgs/barco/barco-1.jpg";
-import img2 from "../assets/imgs/barco/barco-3.jpg";
+import img1 from "../assets/imgs/barco/barco-1.webp";
+import img2 from "../assets/imgs/barco/barco-3.webp";
 
 const ImageSkeleton = () => (
   <div className="absolute inset-0 bg-gray-200 animate-pulse" />

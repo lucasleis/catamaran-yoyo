@@ -2,14 +2,14 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import galeria_1 from "../assets/imgs/galeria_1.jpeg";
-import galeria_2 from "../assets/imgs/galeria_2.jpg";
-import galeria_3 from "../assets/imgs/galeria_3.jpg";
-import galeria_4 from "../assets/imgs/galeria_4.jpeg";
-import galeria_5 from "../assets/imgs/galeria_5.jpg";
-import galeria_6 from "../assets/imgs/galeria_6.jpeg";
-import galeria_7 from "../assets/imgs/galeria_7.jpeg";
-import galeria_8 from "../assets/imgs/destino/destino-2.jpg";
+import galeria_1 from "../assets/imgs/galeria_1.webp";
+import galeria_2 from "../assets/imgs/galeria_2.webp";
+import galeria_3 from "../assets/imgs/galeria_3.webp";
+import galeria_4 from "../assets/imgs/galeria_4.webp";
+import galeria_5 from "../assets/imgs/galeria_5.webp";
+import galeria_6 from "../assets/imgs/galeria_6.webp";
+import galeria_7 from "../assets/imgs/galeria_7.webp";
+import galeria_8 from "../assets/imgs/destino/destino-2.webp";
 
 const ImageSkeleton = () => (
   <div className="absolute inset-0 bg-gray-300 animate-pulse" />

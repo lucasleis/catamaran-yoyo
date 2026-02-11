@@ -1,6 +1,6 @@
 import { Shield, Users, Heart, Award } from "lucide-react";
 import { useState } from "react";
-import barco from "../assets/imgs/barco_altura.jpeg";
+import barco from "../assets/imgs/barco_altura.webp";
 
 /* Skeleton SOLO para la imagen */
 const ImageSkeleton = () => (

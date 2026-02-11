@@ -2,9 +2,9 @@ import { Sunset, PartyPopper, MapPin, Users } from "lucide-react";
 import { useState } from "react";
 
 import atardecer from "../assets/imgs/atardecer.jpg";
-import islas from "../assets/imgs/islas.jpg";
-import paseo_privado from "../assets/imgs/paseo_privado.jpg";
-import celebraciones from "../assets/imgs/celebraciones.jpeg";
+import islas from "../assets/imgs/islas.webp";
+import paseo_privado from "../assets/imgs/paseo_privado.webp";
+import celebraciones from "../assets/imgs/celebraciones.webp";
 
 const ImageSkeleton = () => (
   <div className="absolute inset-0 bg-gray-300 animate-pulse" />
